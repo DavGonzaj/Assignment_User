@@ -19,22 +19,27 @@ class User:
           print("==========================")
             
         def enroll(self):
-            self.is_rewards_member = True
-            self.gold_card_points = 200
-            if(self.enroll == True):
-              print("user already a member")
-              return False
-            else:
-              return True
+          if (self.is_rewards_member):
+            print("user already a member")
+            return False
+          self.is_rewards_member = True
+          self.gold_card_points = 200
 
         def spend_points(self, amount):
-            self.gold_card_points = self.gold_card_points - amount 
+          if self.gold_card_points < amount:
+            "You don't have enough points"
+            return
+          
+          
+          self.gold_card_points -= amount 
+          
         
         
-First_User = User('David','Gonzalez','nyrojaen@gmail.com',23)
-First_User.display_info()
-First_User.enroll()
-First_User.display_info()
-First_User.spend_points(100)
-First_User.display_info()
+first_user = User('David','Gonzalez','nyrojaen@gmail.com',23)
+first_user.display_info().enroll().spend_points(100).display_info()
 
+second_user = User('Lionel','Messi','email@gmail.com',28)
+second_user.display_info().enroll().spend_points(400).display_info()
+
+third_user = User('Cristiano','Ronaldo','Randomemail@gmail.com',38)
+third_user.display_info().enroll().spend_points(20).display_info()
